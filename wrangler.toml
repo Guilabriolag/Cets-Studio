@@ -1,0 +1,22 @@
+# LABRIOLAG · Cloudflare Worker config
+# Deploy: npx wrangler deploy
+
+name = "labriolag-ln"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+BIPA_ADDRESS = "labriolag@bipa.app"
+
+# Para adicionar token real:
+# npx wrangler secret put BIPA_TOKEN
+
+# KV namespace para cache de pagamentos (opcional mas recomendado)
+# Crie com: npx wrangler kv:namespace create "LN_CACHE"
+# Depois descomente e substitua o id:
+# [[kv_namespaces]]
+# binding = "KV"
+# id = "SEU_KV_NAMESPACE_ID"
+
+[routes]
+pattern = "labriolag-ln.workers.dev/*"
